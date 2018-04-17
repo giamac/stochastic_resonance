@@ -1,4 +1,4 @@
-function [noiseFinal] = createNoise(duration,samplingRate, amplitude,  lf, hf)
+function [noiseFinal] = createNoise(duration,samplingRate, amplitude,  lf, hf, plotWav)
     
     npoints   = duration * samplingRate;
     noise     = (amplitude/3)* randn( 1, npoints ); 
@@ -35,7 +35,7 @@ function [noiseFinal] = createNoise(duration,samplingRate, amplitude,  lf, hf)
     binwidth = 1/2*std(noiseFinal);
     numbins = round(range(noiseFinal)/binwidth);
     
-    
+    if isequal(plotWav,'on')
     h = figure;
     subplot(1,2,1);
     plot(timePlot,noiseFinal);
@@ -68,7 +68,7 @@ function [noiseFinal] = createNoise(duration,samplingRate, amplitude,  lf, hf)
     
     
     audiowrite(['signals/noise_' num2str(lf) '_' num2str(hf) '_' num2str(samplingRate) '_' num2str(amplitude) '_' num2str(duration) '.wav'], noiseFinal, samplingRate)
-
+    end
     
 
 end
