@@ -69,7 +69,6 @@ function [noiseFinal] = createNoise(duration,samplingRate, amplitude,  lf, hf, p
     
     audiowrite(['signals/noise_' num2str(lf) '_' num2str(hf) '_' num2str(samplingRate) '_' num2str(amplitude) '_' num2str(duration) '.wav'], noiseFinal, samplingRate)
     end
-    
-
+ 
 end
 
